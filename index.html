@@ -11,42 +11,41 @@
     color: #fff;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
   }
   .container {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-50%);
+    max-width: 90%;
   }
   h1 {
-    font-size: 40px;
+    font-size: clamp(24px, 6vw, 40px);
     text-shadow: 0 0 15px rgba(255,0,76,0.8);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   #typing {
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 28px);
     font-weight: bold;
     min-height: 50px;
+    margin-bottom: 10px;
   }
   #loveText {
-    margin-top: 20px;
-    font-size: 20px;
-    min-height: 150px;
-  }
-  .love-line {
-    margin: 5px 0;
-    animation: fadeIn 1s ease-in;
+    font-size: clamp(14px, 3.5vw, 22px);
+    margin-top: 15px;
+    min-height: 120px;
+    line-height: 1.6;
   }
   #timer {
-    margin-top: 20px;
-    font-size: 18px;
+    font-size: clamp(12px, 3vw, 18px);
     font-weight: bold;
+    margin-top: 10px;
+  }
+  .love-line {
+    animation: fadeIn 1s ease-in;
   }
   @keyframes fadeIn {
     from {opacity: 0;}
@@ -54,7 +53,7 @@
   }
   /* كلمة بحبك مميزة */
   .highlight-love {
-    font-size: 28px;
+    font-size: clamp(20px, 5vw, 28px);
     font-weight: bold;
     background: linear-gradient(45deg, #ff004c, #ff7eb3);
     -webkit-background-clip: text;
@@ -62,21 +61,15 @@
     animation: pulse 1.2s infinite;
   }
   @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      text-shadow: 0 0 10px rgba(255,0,76,0.8);
-    }
-    50% {
-      transform: scale(1.2);
-      text-shadow: 0 0 20px rgba(255,0,76,1);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
   }
-  /* خلفية القلوب */
+  /* القلوب والزهور */
   .floating {
     position: fixed;
-    bottom: 0;
+    bottom: -10px;
     animation: floatUp linear forwards;
-    z-index: 1;
+    z-index: -1;
   }
   @keyframes floatUp {
     to {
@@ -84,11 +77,11 @@
       opacity: 0;
     }
   }
-  /* توقيع أسفل الصفحة */
-  .footer {
-    margin-top: 30px;
-    font-size: 16px;
-    opacity: 0.9;
+  /* الفوتر */
+  footer {
+    margin-top: 20px;
+    font-size: clamp(12px, 3vw, 16px);
+    opacity: 0.8;
   }
   audio {
     display: none;
@@ -102,12 +95,11 @@
   <div id="typing"></div>
   <div id="loveText"></div>
   <div id="timer"></div>
-  <div class="footer">تصميم هذه الصفحة بواسطة خطيبك المخلص حماده 😂❤️</div>
+  <footer>تصميم هذه الصفحة بواسطة خطيبك المخلص حماده 😂❤️</footer>
 </div>
 
 <audio id="bgMusic" loop>
   <source src="https://serv100.albumaty.com/dl/alf/om-kalsoum/Albumaty.com.Om.Kalsoum.Sert.El7ob.mp3" type="audio/mpeg">
-  متصفحك لا يدعم تشغيل الصوت.
 </audio>
 
 <script>
@@ -115,11 +107,11 @@
 
   // تشغيل الصوت عند أول ضغطة
   document.body.addEventListener("click", () => {
-    audio.currentTime = 210; // يبدأ من 3:30
+    audio.currentTime = 210; // 3 دقائق و 30 ثانية
     audio.play();
   }, { once: true });
 
-  // النص الرئيسي
+  // النص الأساسي
   const mainText = "شقاوة ❤️ من 22 يوم و18 ساعة خطفتي قلبي… واليوم انتي خطيبتي بحبك";
   let i = 0;
   function typeWriterMain(callback) {
@@ -156,7 +148,7 @@
     }
   }
 
-  // عداد الوقت
+  // عدّاد الوقت
   const startDate = new Date("July 20, 2025 18:00:00").getTime();
   function updateTimer() {
     const now = new Date().getTime();
@@ -170,26 +162,25 @@
   }
   setInterval(updateTimer, 1000);
 
-  // قلوب وزهور إضافية
-  const icons = ["❤", "💖", "💕", "💞", "💓", "💗", "💘", "🌹", "🌸", "🌺"];
-  function createFloating() {
-    const elem = document.createElement("div");
-    elem.className = "floating";
-    elem.style.left = Math.random() * 100 + "vw";
-    elem.style.fontSize = Math.random() * 20 + 20 + "px";
-    elem.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-    elem.style.animationDuration = Math.random() * 3 + 3 + "s";
-    document.body.appendChild(elem);
-    setTimeout(() => elem.remove(), 6000);
+  // قلوب وزهور متحركة أكتر
+  function createFloating(symbols, duration) {
+    const el = document.createElement("div");
+    el.className = "floating";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = Math.random() * 20 + 20 + "px";
+    el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.animationDuration = duration + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), duration * 1000);
   }
-  setInterval(createFloating, 200); // أسرع وأكثر
+  setInterval(() => createFloating(["❤","💖","💕","💓","🌹","🌸","💘"], 5), 300);
 
   // تمييز كلمة بحبك
   function highlightLoveWords() {
     document.body.innerHTML = document.body.innerHTML.replace(/بحبك/g, '<span class="highlight-love">بحبك</span>');
   }
 
-  // بدء الكتابة
+  // تشغيل النصوص
   typeWriterMain(() => {
     showLovePhrases();
     setTimeout(highlightLoveWords, 2000);

@@ -43,6 +43,8 @@
   }
   .love-line { animation: fadeIn 1s ease-in; }
   @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+  /* كلمة بحبك مميزة */
   .highlight-love {
     font-size: clamp(20px, 5vw, 28px);
     font-weight: bold;
@@ -51,18 +53,35 @@
     -webkit-text-fill-color: transparent;
     animation: pulse 1.2s infinite;
   }
-  @keyframes pulse { 0%,100% {transform: scale(1);} 50% {transform: scale(1.2);} }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
   .floating {
     position: fixed;
     bottom: -10px;
     animation: floatUp linear forwards;
     z-index: -1;
   }
-  @keyframes floatUp {
-    to { transform: translateY(-110vh); opacity: 0; }
-  }
+  @keyframes floatUp { to { transform: translateY(-110vh); opacity: 0; } }
+
   footer { margin-top: 20px; font-size: clamp(12px, 3vw, 16px); opacity: 0.8; }
   audio { display: none; }
+
+  /* زر احتياطي لتمكين الصوت لو المتصفح منع التشغيل */
+  #playAudioBtn {
+    position: fixed;
+    left: 50%;
+    bottom: 6%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    z-index: 9999;
+    cursor: pointer;
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -75,19 +94,61 @@
   <footer>تصميم هذه الصفحة بواسطة خطيبك المخلص حماده 😂❤️</footer>
 </div>
 
-<audio id="bgMusic" autoplay loop muted>
-  <source src=". /مقطع كنت بشتاقلك من اغنية بعيد عنك _ أم كلثوم _ (Short video) Baeed Anak _Umm Kulthum(MP3_160K).mp3" type="audio/mpeg">
+<!-- عنصر الصوت: لا تضع atrib 'autoplay' لأننا ندير التشغيل من الجافاسكربت -->
+<audio id="bgMusic" loop preload="auto" playsinline>
+  <source id="bgSource" src="" type="audio/mpeg">
+  المتصفح الخاص بك لا يدعم تشغيل الصوت.
 </audio>
 
+<button id="playAudioBtn">شغّل الصوت</button>
+
 <script>
-  window.addEventListener("load", () => {
-    const audio = document.getElementById("bgMusic");
-    audio.muted = false; // فك الكتم
-    audio.play().catch(err => {
-      console.log("المتصفح منع التشغيل التلقائي:", err);
+  // -------------------------
+  // إعداد ملف الصوت (مع encodeURI عشان الاسم العربي/المسافات)
+  // -------------------------
+  const audio = document.getElementById('bgMusic');
+  const srcEl = document.getElementById('bgSource');
+  const audioFile = 'مقطع كنت بشتاقلك من اغنية بعيد عنك _ أم كلثوم _ (Short video) Baeed Anak _Umm Kulthum(MP3_160K).mp3';
+  srcEl.src = encodeURI(audioFile); // يحول المسافات والأحرف الخاصة إلى صيغة مناسبة
+  audio.load();
+  audio.volume = 0.8;
+
+  const playBtn = document.getElementById('playAudioBtn');
+
+  function showPlayButton() {
+    playBtn.style.display = 'block';
+  }
+  function hidePlayButton() {
+    playBtn.style.display = 'none';
+  }
+  playBtn.addEventListener('click', () => {
+    audio.muted = false;
+    audio.play().then(() => {
+      hidePlayButton();
+    }).catch(err => {
+      console.warn('لم نستطع تشغيل الصوت بعد الضغط:', err);
     });
   });
 
+  // -------------------------
+  // محاولة التشغيل عندما يحدث الحدث (سنستخدمها عند تمييز "بحبك")
+  // -------------------------
+  function playAudioOnEvent() {
+    audio.muted = false;
+    audio.play().then(() => {
+      // اشتغل الصوت بنجاح
+      hidePlayButton();
+      console.log('الصوت شغّل بسبب حدث "بحبك"');
+    }).catch(err => {
+      // متصفح منع التشغيل التلقائي؛ نظهر زر للتفعيل اليدوي
+      console.warn('المتصفح منع التشغيل الآلي — إظهار زر للتفعيل:', err);
+      showPlayButton();
+    });
+  }
+
+  // -------------------------
+  // نص الـ typewriter وعبارات الحب كما عندك
+  // -------------------------
   const mainText = "شقاوة ❤️ من 22 يوم و18 ساعة خطفتي قلبي… واليوم انتي خطيبتي بحبك";
   let i = 0;
   function typeWriterMain(callback) {
@@ -123,6 +184,9 @@
     }
   }
 
+  // -------------------------
+  // عداد الوقت
+  // -------------------------
   const startDate = new Date("July 20, 2025 18:00:00").getTime();
   function updateTimer() {
     const now = new Date().getTime();
@@ -136,6 +200,9 @@
   }
   setInterval(updateTimer, 1000);
 
+  // -------------------------
+  // قلوب متحركة
+  // -------------------------
   function createFloating(symbols, duration) {
     const el = document.createElement("div");
     el.className = "floating";
@@ -148,14 +215,50 @@
   }
   setInterval(() => createFloating(["❤","💖","💕","💓","🌹","🌸","💘"], 5), 300);
 
+  // -------------------------
+  // تمييز كلمة "بحبك" ولكن بشكل آمن داخل عناصر محددة
+  // ونربط تشغيل الصوت ببدء الـ animation لتلك ال spans
+  // -------------------------
   function highlightLoveWords() {
-    document.body.innerHTML = document.body.innerHTML.replace(/بحبك/g, '<span class="highlight-love">بحبك</span>');
+    // نعمل الاستبدال داخل العناصر اللي ممكن تحتوي الكلمة
+    ['typing', 'loveText'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      // استبدال كل "بحبك" بعنصر span
+      el.innerHTML = el.innerHTML.replace(/بحبك/g, '<span class="highlight-love">بحبك</span>');
+    });
+
+    // نضيف مستمع لبدء الـ animation على كل عنصر
+    const spans = document.querySelectorAll('.highlight-love');
+    spans.forEach(span => {
+      // عند بداية الحركة نشغّل الصوت (مرة واحدة لكل عنصر)
+      span.addEventListener('animationstart', () => {
+        playAudioOnEvent();
+      }, { once: true });
+
+      // Webkit fallback
+      span.addEventListener('webkitAnimationStart', () => {
+        playAudioOnEvent();
+      }, { once: true });
+    });
+
+    // نجرب تشغيل الصوت فوراً (لو المتصفح يسمح)
+    playAudioOnEvent();
   }
 
+  // -------------------------
+  // تشغيل النصوص والتمييز بعد انتهاء كتابتها / إظهار العبارات
+  // -------------------------
   typeWriterMain(() => {
     showLovePhrases();
+    // بعد ثانيتين من عرض العبارات نحول "بحبك" إلى span (وبالتالي يبدأ الـ animation)
     setTimeout(highlightLoveWords, 2000);
   });
+
+  // -------------------------
+  // ملاحظة: لو دخلت الصفحة من سيرفر (مثل GitHub Pages) وُتأكد أن اسم الملف مطابق للملف الموجود بالـ repo.
+  // يفضل لو حصلت مشاكل إعادة تسمية الملف لاسم لاتيني قصير (مثلاً song.mp3) وتحديث المتغير audioFile أعلاه.
+  // -------------------------
 </script>
 
 </body>

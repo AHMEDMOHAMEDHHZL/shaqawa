@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شقاوة ❤️</title>
+<style>
+  body {
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+    text-align: center;
+    font-family: 'Tahoma', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    cursor: pointer;
+  }
+  #typing {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  #loveText {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .love-line {
+    margin: 5px 0;
+    animation: fadeIn 1s ease-in;
+  }
+  #timer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .heart, .flower {
+    position: fixed;
+    bottom: 0;
+    animation: floatUp linear forwards;
+  }
+  @keyframes floatUp {
+    to {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  audio {
+    margin-top: 15px;
+    width: 80%;
+    max-width: 400px;
+    display: none; /* إخفاء المشغل */
+  }
+</style>
+</head>
+<body>
+
+<h1>💖 شقاوة 💖</h1>
+
+<div id="typing"></div>
+<div id="loveText"></div>
+<div id="timer"></div>
+
+<audio id="bgMusic" loop>
+  <source src="https://serv100.albumaty.com/dl/alf/om-kalsoum/Albumaty.com.Om.Kalsoum.Sert.El7ob.mp3" type="audio/mpeg">
+  المتصفح لا يدعم تشغيل الصوت.
+</audio>
+
+<script>
+  const audio = document.getElementById("bgMusic");
+
+  // تشغيل الصوت عند أول ضغطة
+  document.body.addEventListener("click", () => {
+    audio.currentTime = 210; // 3 دقائق و 30 ثانية
+    audio.play();
+  }, { once: true });
+
+  const mainText = "شقاوة ❤️ من 22 يوم و18 ساعة خطفتي قلبي… واليوم انتي خطيبتي";
+  let i = 0;
+  function typeWriterMain(callback) {
+    if (i < mainText.length) {
+      document.getElementById("typing").innerHTML += mainText.charAt(i);
+      i++;
+      setTimeout(() => typeWriterMain(callback), 100);
+    } else if (callback) {
+      setTimeout(callback, 500);
+    }
+  }
+
+  const lovePhrases = [
+    "أحبك بكل لغات العالم ❤️",
+    "أنتِ دنيتي وأجمل أقداري 💕",
+    "معك… يصبح كل شيء أجمل 🌹",
+    "أنتِ نبض قلبي وروحي 💖",
+    "لو كان الحب كلمة… فأنتِ معناها ✨",
+    "وحياة عينيك… العمر معك أحلى 💍",
+    "أنتِ البداية والنهاية وكل الحكايات 📖"
+  ];
+  let phraseIndex = 0;
+  function showLovePhrases() {
+    const container = document.getElementById("loveText");
+    if (phraseIndex < lovePhrases.length) {
+      const newLine = document.createElement("div");
+      newLine.className = "love-line";
+      newLine.textContent = lovePhrases[phraseIndex];
+      container.appendChild(newLine);
+      phraseIndex++;
+      setTimeout(showLovePhrases, 1500);
+    }
+  }
+
+  const startDate = new Date("July 20, 2025 18:00:00").getTime();
+  function updateTimer() {
+    const now = new Date().getTime();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById("timer").innerHTML =
+      `مر علينا: ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية ❤️`;
+  }
+  setInterval(updateTimer, 1000);
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.innerHTML = "❤";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+  function createFlower() {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = Math.random() * 15 + 15 + "px";
+    flower.innerHTML = "🌸";
+    flower.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(flower);
+    setTimeout(() => flower.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
+  setInterval(createFlower, 1000);
+
+  typeWriterMain(showLovePhrases);
+</script>
+
+</body>
+</html>

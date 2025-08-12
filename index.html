@@ -19,15 +19,18 @@
     height: 100vh;
     text-align: center;
     flex-direction: column;
+    position: relative;
   }
   .love-card {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 20px;
+    padding: 25px 20px;
     box-shadow: 0 0 30px rgba(255,0,76,0.4);
     animation: fadeZoom 1.2s ease forwards;
     max-width: 90%;
+    position: relative;
+    z-index: 10;
   }
   @keyframes fadeZoom {
     from { opacity: 0; transform: scale(0.8); }
@@ -51,7 +54,7 @@
     color: #fff;
     text-shadow: 0 0 10px rgba(255,255,255,0.3);
     animation: fadeIn 1s ease forwards;
-    min-height: 120px;
+    min-height: 140px;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -60,7 +63,7 @@
   #timer {
     font-size: clamp(14px, 3vw, 20px);
     display: block;
-    margin-top: 5px;
+    margin-top: 10px;
   }
   .highlight-love {
     animation: pulse 1.2s infinite;
@@ -70,7 +73,8 @@
     position: fixed;
     bottom: -10px;
     animation: floatUp linear forwards;
-    z-index: -1;
+    z-index: 99999;
+    pointer-events: none;
   }
   @keyframes floatUp {
     to { transform: translateY(-110vh); opacity: 0; }
@@ -78,7 +82,9 @@
   footer {
     margin-top: 20px;
     font-size: clamp(12px, 3vw, 16px);
-    opacity: 0.8;
+    opacity: 0.85;
+    z-index: 20;
+    position: relative;
   }
   audio {
     display: none;
@@ -96,7 +102,7 @@
     box-shadow: 0 0 15px rgba(255,0,76,0.6);
     cursor: pointer;
     animation: pulse 1.2s infinite;
-    z-index: 9999;
+    z-index: 99999;
     user-select: none;
     display: flex;
     justify-content: center;
@@ -112,10 +118,9 @@
   <div id="loveText"></div>
 </div>
 
-<footer>تصميم هذه الصفحة بواسطة خطيبك المخلص حماده 😂❤️</footer>
+<footer> ♥😂🔥حبيبك المخلص دوما وليس يوما حماده</footer>
 
-<audio id="bgMusic" autoplay loop muted>
-  <source src="song.mp3" type="audio/mpeg" />
+<audio id="bgMusic" src="song.mp3" type="audio/mpeg" />
 </audio>
 
 <div id="musicBtn" class="music-btn" title="تشغيل / إيقاف الأغنية">❤️</div>
@@ -123,6 +128,9 @@
 <script>
   const audio = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
+
+  // ضبط بداية الصوت من 120 ثانية (دقيقة 2)
+  audio.currentTime = 120;
 
   // محاولة تشغيل الصوت تلقائيًا عند تحميل الصفحة
   window.addEventListener("load", () => {
@@ -132,7 +140,7 @@
     });
   });
 
-  // تحديث حالة الزر عند التشغيل/الإيقاف
+  // زر التحكم
   let isPlaying = false;
   musicBtn.addEventListener("click", () => {
     if (isPlaying) {
@@ -150,13 +158,12 @@
     isPlaying = true;
     musicBtn.textContent = "⏸";
   });
-
   audio.addEventListener("pause", () => {
     isPlaying = false;
     musicBtn.textContent = "▶";
   });
 
-  // جمل الحب
+  // جمل حب أوسع
   const lovePhrases = [
     "أحبك بكل لغات العالم ❤️",
     "أنتِ دنيتي وأجمل أقداري 💕",
@@ -165,7 +172,14 @@
     "لو كان الحب كلمة… فأنتِ معناها ✨",
     "وحياة عينيك… العمر معك أحلى 💍",
     "أنتِ البداية والنهاية وكل الحكايات 📖",
-    "بحبك يا عمري ❤️"
+    "بحبك يا عمري ❤️",
+    "كل لحظة معك كنز لا يقدر بثمن 💝",
+    "حبي لك يزيد كل يوم بدون حدود 🔥",
+    "أنتِ نجمة تضيء سماء حياتي ⭐",
+    "معك، تحلو الدنيا وتتبدل الأحزان 🌈",
+    "أحبك فوق ما تصف الكلمات 💫",
+    "أنتِ الحب والعشق والحنان كله 💞",
+    "قلبي ملكك وحدك، والروح في هواك 🥰"
   ];
   let phraseIndex = 0;
   function showLovePhrases() {
@@ -176,7 +190,7 @@
       newLine.innerHTML = lovePhrases[phraseIndex];
       container.appendChild(newLine);
       phraseIndex++;
-      setTimeout(showLovePhrases, 2000);
+      setTimeout(showLovePhrases, 1800);
     }
   }
   showLovePhrases();
@@ -196,20 +210,21 @@
   setInterval(updateTimer, 1000);
   updateTimer();
 
-  // قلوب وزهور عائمة
+  // قلوب وزهور عائمة أكثر وتظهر فوق المربع
   function createFloating(symbols, duration) {
     const el = document.createElement("div");
     el.className = "floating";
+    el.style.bottom = "40%"; // تظهر فوق المربع (تقريبًا في منتصف الشاشة)
     el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = Math.random() * 20 + 20 + "px";
+    el.style.fontSize = Math.random() * 25 + 25 + "px"; // حجم أكبر قليلاً
     el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
     el.style.animationDuration = duration + "s";
     document.body.appendChild(el);
     setTimeout(() => el.remove(), duration * 1000);
   }
-  setInterval(() => createFloating(["❤","💖","💕","💓","🌹","🌸","💘"], 5), 300);
+  // زيادة كثافة القلوب بزمن أقل
+  setInterval(() => createFloating(["❤","💖","💕","💓","🌹","🌸","💘"], 5), 150);
 </script>
 
 </body>
 </html>
-

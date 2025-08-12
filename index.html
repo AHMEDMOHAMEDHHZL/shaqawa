@@ -9,20 +9,21 @@
     background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
     font-family: 'Tahoma', sans-serif;
     color: #fff;
-    overflow: hidden;
     margin: 0;
     padding: 0;
+    overflow: hidden;
     cursor: pointer;
+    text-align: center;
   }
   .container {
-    text-align: center;
-    position: relative;
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    padding: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
   }
   h1 {
-    font-size: 36px;
+    font-size: 40px;
     text-shadow: 0 0 15px rgba(255,0,76,0.8);
     margin-bottom: 20px;
   }
@@ -30,6 +31,7 @@
     font-size: 24px;
     font-weight: bold;
     min-height: 50px;
+    line-height: 1.6;
   }
   #loveText {
     margin-top: 20px;
@@ -63,7 +65,6 @@
   audio {
     display: none;
   }
-
   /* كلمة بحبك مميزة */
   .highlight-love {
     font-size: 28px;
@@ -104,17 +105,23 @@
 
   // تشغيل الصوت عند أول ضغطة
   document.body.addEventListener("click", () => {
-    audio.currentTime = 210; // 3 دقائق و 30 ثانية
+    audio.currentTime = 210; // يبدأ من الدقيقة 3:30
     audio.play();
   }, { once: true });
 
-  // النص الأساسي
+  // النص الأساسي مع تمييز كلمة بحبك فور كتابتها
   const mainText = "شقاوة ❤️ من 22 يوم و18 ساعة خطفتي قلبي… واليوم انتي خطيبتي بحبك";
   let i = 0;
   function typeWriterMain(callback) {
     if (i < mainText.length) {
-      document.getElementById("typing").innerHTML += mainText.charAt(i);
-      i++;
+      let char = mainText.charAt(i);
+      if (mainText.slice(i, i + 5) === "بحبك") {
+        document.getElementById("typing").innerHTML += '<span class="highlight-love">بحبك</span>';
+        i += 5;
+      } else {
+        document.getElementById("typing").innerHTML += char;
+        i++;
+      }
       setTimeout(() => typeWriterMain(callback), 100);
     } else if (callback) {
       setTimeout(callback, 500);
@@ -138,7 +145,7 @@
     if (phraseIndex < lovePhrases.length) {
       const newLine = document.createElement("div");
       newLine.className = "love-line";
-      newLine.innerHTML = lovePhrases[phraseIndex];
+      newLine.innerHTML = lovePhrases[phraseIndex].replace(/بحبك/g, '<span class="highlight-love">بحبك</span>');
       container.appendChild(newLine);
       phraseIndex++;
       setTimeout(showLovePhrases, 1500);
@@ -183,16 +190,8 @@
   setInterval(createHeart, 400);
   setInterval(createFlower, 1000);
 
-  // تمييز كلمة بحبك
-  function highlightLoveWords() {
-    document.body.innerHTML = document.body.innerHTML.replace(/بحبك/g, '<span class="highlight-love">بحبك</span>');
-  }
-
-  // تشغيل النصوص
-  typeWriterMain(() => {
-    showLovePhrases();
-    setTimeout(highlightLoveWords, 2000);
-  });
+  // بدء الكتابة
+  typeWriterMain(showLovePhrases);
 </script>
 
 </body>

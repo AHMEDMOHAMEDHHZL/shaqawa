@@ -3,120 +3,175 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>يا شقاوة قلبي وشهد عمري ❤</title>
+    <title>💞 يا شقاوة قلبي وشهد عمري 💞</title>
+
+    <!-- خط عربي جميل -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       body {
-        font-family: "Droid Arabic Naskh", Tahoma, sans-serif;
-        background-color: #f8f0f8;
-        color: #4a148c;
+        font-family: "Cairo", sans-serif;
         margin: 0;
         padding: 0;
         text-align: center;
+        color: #4a0e4e;
+        background: linear-gradient(135deg, #ffe4ec, #f8d3e4, #fff0f6);
+        background-size: 400% 400%;
+        animation: moveBg 10s ease infinite;
         line-height: 1.8;
-        background-image: linear-gradient(to top, #ffc1cc 0%, #f8f0f8 100%);
-        background-attachment: fixed;
+      }
+
+      @keyframes moveBg {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       .container {
-        max-width: 900px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
       }
 
       /* الغلاف */
       .cover-photo {
         width: 100%;
-        max-height: 500px;
+        max-height: 400px;
         object-fit: cover;
         border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        margin-bottom: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s ease;
+      }
+      .cover-photo:hover {
+        transform: scale(1.04);
       }
 
       h1 {
-        color: #e91e63;
-        font-size: 3.5em;
-        margin-bottom: 5px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        color: #d81b60;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
       }
 
       h2 {
         color: #880e4f;
-        border-bottom: 3px solid #ffcdd2;
+        border-bottom: 3px solid #f48fb1;
         padding-bottom: 10px;
         margin-top: 40px;
-        font-size: 2.2em;
+        font-size: 1.8em;
       }
 
-      .message {
-        font-size: 1.3em;
-        text-align: justify;
-        padding: 25px;
-        border-left: 6px solid #c2185b;
-        background-color: #fce4ec;
-        margin: 30px 0;
+      p {
+        font-size: 1.2em;
+        color: #4a0e4e;
       }
 
       .longing-message {
-        color: #9c27b0;
-        font-weight: bold;
-        font-size: 1.5em;
-        background-color: #e1bee7;
+        background-color: #f3e5f5;
         padding: 20px;
-        border-radius: 10px;
-        border: 3px dashed #7b1fa2;
+        border-radius: 15px;
+        border: 2px dashed #ab47bc;
+        color: #6a1b9a;
+        font-weight: 600;
+        margin-top: 25px;
+      }
+
+      .song-box {
+        background-color: #fff5f7;
+        padding: 20px;
+        border-radius: 15px;
         margin-top: 30px;
+        border: 3px solid #f06292;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .song-box p {
+        color: #ad1457;
+        font-size: 1.1em;
+      }
+
+      iframe {
+        border-radius: 15px;
+        width: 100%;
+        height: 250px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       }
 
       .initials-list {
         list-style: none;
         padding: 0;
         display: flex;
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
       }
 
       .initials-list li {
-        background-color: #f3e5f5;
-        color: #311b92;
-        margin: 10px;
-        padding: 20px 30px;
+        background: linear-gradient(135deg, #f8bbd0, #f3e5f5);
+        padding: 15px 25px;
         border-radius: 15px;
-        font-size: 1.2em;
         font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, background-color 0.3s;
+        color: #4a148c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
       }
 
       .initials-list li:hover {
-        transform: translateY(-5px) scale(1.05);
-        background-color: #e1bee7;
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f48fb1, #ce93d8);
       }
 
-      .initials-list li span {
-        font-size: 2em;
+      .initials-list span {
         display: block;
-        margin-bottom: 5px;
-        color: #e91e63;
-      }
-
-      .song-box {
-        background-color: #ffebee;
-        padding: 25px;
-        border-radius: 15px;
-        margin-top: 30px;
-        border: 3px solid #e91e63;
-      }
-
-      .song-box p {
-        font-size: 1.2em;
+        font-size: 1.6em;
         color: #c2185b;
+        margin-bottom: 5px;
+      }
+
+      .message {
+        background-color: #fff0f6;
+        padding: 20px;
+        border-left: 6px solid #ec407a;
+        border-radius: 10px;
+        margin-top: 25px;
+        text-align: justify;
+      }
+
+      footer {
+        margin-top: 40px;
+        color: #6a1b9a;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2em;
+        }
+        h2 {
+          font-size: 1.4em;
+        }
+        p,
+        li {
+          font-size: 1em;
+        }
       }
     </style>
   </head>
+
   <body>
     <div class="container">
       <!-- صورة الغلاف -->
@@ -126,92 +181,67 @@
         class="cover-photo"
       />
 
-      <h1>يا شقاوة قلبي وشهد عمري ❤</h1>
-      <p style="font-size: 1.7em; color: #7b1fa2">
-        إلى عيوني، إلى كل دنيتي... <strong>شهندة (شقاوة)</strong>
-      </p>
+      <h1>يا شقاوة قلبي وشهد عمري 💞</h1>
+      <p>إلى عيوني، إلى دنيتي... <strong>شهندة (شقاوة)</strong></p>
 
       <div class="longing-message">
+        <p>وحشااااني يا شقاوة... وحشااااني يا شهندة... كتير!</p>
         <p>
-          <strong>وحشاااااني يا شقاوة... وحشااااني يا شهندة... كتير!</strong>
-        </p>
-        <p>
-          مقدرتش أستنى أكتر من كده عشان أقولك إني بجد طاقتي كلها خلصت الأسبوع
-          ده. غيابك يوم واحد بيفرق في روحي، فما بالك بأسبوع كامل! كل لحظة بتعدي
-          بكون عايز أسمع صوتك أو أشوف ضحكتك اللي بتنسيني الدنيا. أنا بستناكِ
-          بفارغ الصبر عشان الأيام ترجع حلوة تاني بوجودك. قلبي مشتاق لك يا
+          غيابك يوم واحد بيفرق في روحي، فما بالك بأسبوع كامل! كل لحظة بتمر بحس
+          إن الدنيا وقفت لحد ما أسمع صوتك تاني. قلبي مشتاقلك يا
           <strong>شقاوة عمري</strong>.
         </p>
       </div>
 
-   <div class="song-box">
-  <h2>🎵 على أنغام حُبنا (إهداء خاص مني ليكِ)</h2>
-  <p>
-    كل كلمة في الأغنية دي بتوصف اللي حاسس بيه لما بتكوني معايا... كأن
-    الأيام أخيرًا رضيت علينا.
-  </p>
+      <div class="song-box">
+        <h2>🎶 على أنغام حُبنا</h2>
+        <p>
+          كل كلمة في الأغنية دي بتوصف إحساسي بيكِ... كأن الأيام أخيرًا رضيت
+          علينا 💗
+        </p>
 
-  <iframe
-    width="100%"
-    height="250"
-    src="https://www.youtube.com/embed/HcaQQu1saF0?autoplay=1&mute=1&loop=1&playlist=HcaQQu1saF0&controls=1"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);"
-  ></iframe>
+        <iframe
+          id="song"
+          src="https://www.youtube.com/embed/HcaQQu1saF0?autoplay=1&mute=1&loop=1&playlist=HcaQQu1saF0&controls=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
 
-  <p><strong>"عايشة حالة حب معاك وخداني... وصعب إنها تتكرر تاني."</strong></p>
-</div>
+        <p><strong>عايشة حالة حب معاك وخداني... وصعب إنها تتكرر تاني 💞</strong></p>
+      </div>
 
-      <h2>🌟 شهندة: حروفٌ تصف معنى السعادة</h2>
+      <h2>🌸 شهندة: حروف تصف معنى السعادة 🌸</h2>
       <ul class="initials-list">
-        <li>
-          <span>ش</span> شقاوتك يا <strong>شقاوة</strong> اللي بتخلي الحياة ليها
-          طعم تاني ومختلف.
-        </li>
-        <li>
-          <span>ه</span> هدوئك يا <strong>شهندة</strong> اللي بيطمني وبيخليني
-          أحس بالأمان.
-        </li>
-        <li><span>ن</span> نور عيني، يا نجمة بتنوّري لي طريقي كل يوم.</li>
-        <li><span>د</span> دفء حضنك اللي بحس فيه إني في بيتي.</li>
-        <li>
-          <span>ة</span> أجمل هدية من ربنا على صبري هي إنتِ يا
-          <strong>شقاوة</strong>.
-        </li>
+        <li><span>ش</span> شقاوتك يا <strong>شقاوة</strong> اللي بتخلي الحياة حلوة.</li>
+        <li><span>ه</span> هدوئك اللي بيطمني وبيخلي قلبي يرتاح.</li>
+        <li><span>ن</span> نورك اللي بيضوي لي أيامي.</li>
+        <li><span>د</span> دفء حضنك اللي هو مكاني الآمن.</li>
+        <li><span>ة</span> أجمل هدية من ربنا هي إنتِ يا <strong>شقاوة</strong>.</li>
       </ul>
 
-      <h2>💌 رسالة حب من حمودي لأجمل شهندة</h2>
+      <h2>💌 رسالة من حمودي لأجمل شهندة</h2>
       <div class="message">
         <p>
           يا أميرة قلبي <strong>شهندة</strong>، يا أحلى دلع
-          <strong>شقاوة</strong>،
+          <strong>شقاوة</strong> ❤️
         </p>
         <p>
-          أنتِ مش بس خطيبتي، أنتِ النبض اللي بيحيي قلبي. من يوم ما دخلتِ حياتي،
-          كل شيء بقى مختلف، بقى أجمل وأعمق. أنا بحبك عشان أنتِ أنتِ... بصراحتك،
-          وحنيتك، وقوتك اللي بتظهر لما الدنيا تضيق.
+          إنتِ النبض اللي بيحيي قلبي، والفرحة اللي بتغيّر كل حاجة حواليّ. من يوم
+          ما عرفتك، الدنيا بقت أهدى وأجمل. بحبك عشان إنتِ نفسك، بعفويتك وطيبتك
+          اللي مالياني أمان.
         </p>
-
         <p>
-          بحبك يا <strong>شقاوة</strong> على اللي بتعمليه عشاني، وعلى كل تضحية،
-          وكل كلمة طيبة، وكل دعوة حلوة. أنا معاكِ حاسس إني بكمل، وإني لقيت روحي
-          التانية اللي كنت بدور عليها. كل دقيقة بعيدة عنك بتأكد لي قد إيه أنا
-          محظوظ بيكِ، وقد إيه حياتي بتبقى ناقصة من غيرك.
+          كل ثانية بتمر بعيد عنك بتأكد لي إني لقيت نصي التاني فعلاً. بحبك فوق كل
+          كلام، وهفضل دايمًا <strong>حمودي بتاع شهندة</strong> 💕
         </p>
 
-        <p>
-          انتظري مني كل الحب والاحتواء في الفترة اللي جاية.
-          <strong>يا أجمل شهندة في الدنيا، أحبك كثيراً يا شقاوة قلبي.</strong>
-        </p>
-
-        <p style="text-align: left; margin-top: 30px">
-          بكل الشوق والحب،<br />
-          حبيبك إلى الأبد ❤<br />
-          <strong>حمودي (أحمد)</strong>
+        <p style="text-align: left; margin-top: 25px">
+          بكل الحب والشوق،<br />
+          <strong>حمودي (أحمد)</strong> ❤️
         </p>
       </div>
+
+      <footer>💞 من حمودي إلى شقاوته... للأبد 💞</footer>
     </div>
   </body>
 </html>

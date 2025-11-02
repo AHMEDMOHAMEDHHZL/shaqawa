@@ -1,231 +1,219 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>شقاوة ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
-<style>
-  body {
-    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-    font-family: 'Cairo', sans-serif;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    flex-direction: column;
-    position: relative;
-  }
-  .love-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 25px 20px;
-    box-shadow: 0 0 30px rgba(255,0,76,0.4);
-    animation: fadeZoom 1.2s ease forwards;
-    max-width: 90%;
-    position: relative;
-    z-index: 10;
-  }
-  @keyframes fadeZoom {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  #typing {
-    font-size: clamp(26px, 7vw, 42px);
-    font-weight: bold;
-    background: linear-gradient(90deg, #ff004c, #ff7eb3, #ff004c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
-    margin-bottom: 15px;
-  }
-  @keyframes shine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-  }
-  #loveText {
-    font-size: clamp(16px, 4vw, 24px);
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.3);
-    animation: fadeIn 1s ease forwards;
-    min-height: 140px;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  #timer {
-    font-size: clamp(14px, 3vw, 20px);
-    display: block;
-    margin-top: 10px;
-  }
-  .highlight-love {
-    animation: pulse 1.2s infinite;
-  }
-  @keyframes pulse { 0%,100% {transform: scale(1);} 50% {transform: scale(1.1);} }
-  .floating {
-    position: fixed;
-    bottom: -10px;
-    animation: floatUp linear forwards;
-    z-index: 99999;
-    pointer-events: none;
-  }
-  @keyframes floatUp {
-    to { transform: translateY(-110vh); opacity: 0; }
-  }
-  footer {
-    margin-top: 20px;
-    font-size: clamp(12px, 3vw, 16px);
-    opacity: 0.85;
-    z-index: 20;
-    position: relative;
-  }
-  audio {
-    display: none;
-  }
-  /* زر تحكم الصوت */
-  .music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(45deg, #ff004c, #ff7eb3);
-    color: white;
-    font-size: 26px;
-    padding: 10px 14px;
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255,0,76,0.6);
-    cursor: pointer;
-    animation: pulse 1.2s infinite;
-    z-index: 99999;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>يا شقاوة قلبي وشهد عمري ❤</title>
+    <style>
+      body {
+        font-family: "Droid Arabic Naskh", Tahoma, sans-serif;
+        background-color: #f8f0f8;
+        color: #4a148c;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        line-height: 1.8;
+        background-image: linear-gradient(to top, #ffc1cc 0%, #f8f0f8 100%);
+        background-attachment: fixed;
+      }
 
-<div class="love-card">
-  <div id="typing" class="highlight-love">بحبك ❤️</div>
-  <span id="timer"></span>
-  <div id="loveText"></div>
-</div>
+      .container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      }
 
-<footer>حبيبك المخلص دوما وليس يوما حماده ♥♥🥷😂🔥</footer>
+      /* الغلاف */
+      .cover-photo {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        margin-bottom: 25px;
+      }
 
-<audio id="bgMusic" src="song.mp3" type="audio/mpeg" />
-</audio>
+      h1 {
+        color: #e91e63;
+        font-size: 3.5em;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-<div id="musicBtn" class="music-btn" title="تشغيل / إيقاف الأغنية">❤️</div>
+      h2 {
+        color: #880e4f;
+        border-bottom: 3px solid #ffcdd2;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        font-size: 2.2em;
+      }
 
-<script>
-  const audio = document.getElementById("bgMusic");
-  const musicBtn = document.getElementById("musicBtn");
+      .message {
+        font-size: 1.3em;
+        text-align: justify;
+        padding: 25px;
+        border-left: 6px solid #c2185b;
+        background-color: #fce4ec;
+        margin: 30px 0;
+      }
 
-  // ضبط بداية الصوت من 120 ثانية (دقيقة 2)
-  audio.currentTime = 120;
+      .longing-message {
+        color: #9c27b0;
+        font-weight: bold;
+        font-size: 1.5em;
+        background-color: #e1bee7;
+        padding: 20px;
+        border-radius: 10px;
+        border: 3px dashed #7b1fa2;
+        margin-top: 30px;
+      }
 
-  // محاولة تشغيل الصوت تلقائيًا عند تحميل الصفحة
-  window.addEventListener("load", () => {
-    audio.muted = false;
-    audio.play().catch(() => {
-      console.log("تشغيل الصوت يحتاج تفاعل المستخدم");
-    });
-  });
+      .initials-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-  // زر التحكم
-  let isPlaying = false;
-  musicBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      audio.pause();
-      musicBtn.textContent = "▶"; // رمز تشغيل
-      isPlaying = false;
-    } else {
-      audio.play();
-      musicBtn.textContent = "⏸"; // رمز إيقاف
-      isPlaying = true;
-    }
-  });
+      .initials-list li {
+        background-color: #f3e5f5;
+        color: #311b92;
+        margin: 10px;
+        padding: 20px 30px;
+        border-radius: 15px;
+        font-size: 1.2em;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, background-color 0.3s;
+      }
 
-  audio.addEventListener("play", () => {
-    isPlaying = true;
-    musicBtn.textContent = "⏸";
-  });
-  audio.addEventListener("pause", () => {
-    isPlaying = false;
-    musicBtn.textContent = "▶";
-  });
+      .initials-list li:hover {
+        transform: translateY(-5px) scale(1.05);
+        background-color: #e1bee7;
+      }
 
-  // جمل حب أوسع
-  const lovePhrases = [
-    "أحبك بكل لغات العالم ❤️",
-    "أنتِ دنيتي وأجمل أقداري 💕",
-    "معك… يصبح كل شيء أجمل 🌹",
-    "أنتِ نبض قلبي وروحي 💖",
-    "لو كان الحب كلمة… فأنتِ معناها ✨",
-    "وحياة عينيك… العمر معك أحلى 💍",
-    "أنتِ البداية والنهاية وكل الحكايات 📖",
-    "بحبك يا عمري ❤️",
-    "كل لحظة معك كنز لا يقدر بثمن 💝",
-    "حبي لك يزيد كل يوم بدون حدود 🔥",
-    "أنتِ نجمة تضيء سماء حياتي ⭐",
-    "معك، تحلو الدنيا وتتبدل الأحزان 🌈",
-    "أحبك فوق ما تصف الكلمات 💫",
-    "أنتِ الحب والعشق والحنان كله 💞",
-    "قلبي ملكك وحدك، والروح في هواك 🥰"
-  ];
-  let phraseIndex = 0;
-  function showLovePhrases() {
-    const container = document.getElementById("loveText");
-    if (phraseIndex < lovePhrases.length) {
-      const newLine = document.createElement("div");
-      newLine.className = "love-line";
-      newLine.innerHTML = lovePhrases[phraseIndex];
-      container.appendChild(newLine);
-      phraseIndex++;
-      setTimeout(showLovePhrases, 1800);
-    }
-  }
-  showLovePhrases();
+      .initials-list li span {
+        font-size: 2em;
+        display: block;
+        margin-bottom: 5px;
+        color: #e91e63;
+      }
 
-  // المؤقت الزمني
-  const startDate = new Date("July 20, 2025 18:00:00").getTime();
-  function updateTimer() {
-    const now = new Date().getTime();
-    const diff = now - startDate;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById("timer").innerHTML =
-      `مر علينا: ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية ❤️`;
-  }
-  setInterval(updateTimer, 1000);
-  updateTimer();
+      .song-box {
+        background-color: #ffebee;
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+        border: 3px solid #e91e63;
+      }
 
-  // قلوب وزهور عائمة أكثر وتظهر فوق المربع
-  function createFloating(symbols, duration) {
-    const el = document.createElement("div");
-    el.className = "floating";
-    el.style.bottom = "40%"; // تظهر فوق المربع (تقريبًا في منتصف الشاشة)
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = Math.random() * 25 + 25 + "px"; // حجم أكبر قليلاً
-    el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.animationDuration = duration + "s";
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), duration * 1000);
-  }
-  // زيادة كثافة القلوب بزمن أقل
-  setInterval(() => createFloating(["❤","💖","💕","💓","🌹","🌸","💘"], 5), 150);
-</script>
+      .song-box p {
+        font-size: 1.2em;
+        color: #c2185b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- صورة الغلاف -->
+      <img
+        src="/images/cover.jpg"
+        alt="صورة حمودي وشهندة"
+        class="cover-photo"
+      />
 
-</body>
+      <h1>يا شقاوة قلبي وشهد عمري ❤</h1>
+      <p style="font-size: 1.7em; color: #7b1fa2">
+        إلى عيوني، إلى كل دنيتي... <strong>شهندة (شقاوة)</strong>
+      </p>
+
+      <div class="longing-message">
+        <p>
+          <strong>وحشاااااني يا شقاوة... وحشااااني يا شهندة... كتير!</strong>
+        </p>
+        <p>
+          مقدرتش أستنى أكتر من كده عشان أقولك إني بجد طاقتي كلها خلصت الأسبوع
+          ده. غيابك يوم واحد بيفرق في روحي، فما بالك بأسبوع كامل! كل لحظة بتعدي
+          بكون عايز أسمع صوتك أو أشوف ضحكتك اللي بتنسيني الدنيا. أنا بستناكِ
+          بفارغ الصبر عشان الأيام ترجع حلوة تاني بوجودك. قلبي مشتاق لك يا
+          <strong>شقاوة عمري</strong>.
+        </p>
+      </div>
+
+      <div class="song-box">
+        <h2>🎵 على أنغام حُبنا (إهداء خاص مني ليكِ)</h2>
+        <p>
+          كل كلمة في الأغنية دي بتوصف اللي حاسس بيه لما بتكوني معايا... كأن
+          الأيام أخيرًا رضيت علينا.
+        </p>
+
+        <iframe
+          width="100%"
+          height="90"
+          src="https://www.youtube.com/embed/HcaQQu1saF0?autoplay=1&amp;controls=0"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="border-radius: 10px"
+        ></iframe>
+
+        <p>
+          <strong>"عايشة حالة حب معاك وخداني... وصعب إنها تتكرر تاني."</strong>
+        </p>
+      </div>
+
+      <h2>🌟 شهندة: حروفٌ تصف معنى السعادة</h2>
+      <ul class="initials-list">
+        <li>
+          <span>ش</span> شقاوتك يا <strong>شقاوة</strong> اللي بتخلي الحياة ليها
+          طعم تاني ومختلف.
+        </li>
+        <li>
+          <span>ه</span> هدوئك يا <strong>شهندة</strong> اللي بيطمني وبيخليني
+          أحس بالأمان.
+        </li>
+        <li><span>ن</span> نور عيني، يا نجمة بتنوّري لي طريقي كل يوم.</li>
+        <li><span>د</span> دفء حضنك اللي بحس فيه إني في بيتي.</li>
+        <li>
+          <span>ة</span> أجمل هدية من ربنا على صبري هي إنتِ يا
+          <strong>شقاوة</strong>.
+        </li>
+      </ul>
+
+      <h2>💌 رسالة حب من حمودي لأجمل شهندة</h2>
+      <div class="message">
+        <p>
+          يا أميرة قلبي <strong>شهندة</strong>، يا أحلى دلع
+          <strong>شقاوة</strong>،
+        </p>
+        <p>
+          أنتِ مش بس خطيبتي، أنتِ النبض اللي بيحيي قلبي. من يوم ما دخلتِ حياتي،
+          كل شيء بقى مختلف، بقى أجمل وأعمق. أنا بحبك عشان أنتِ أنتِ... بصراحتك،
+          وحنيتك، وقوتك اللي بتظهر لما الدنيا تضيق.
+        </p>
+
+        <p>
+          بحبك يا <strong>شقاوة</strong> على اللي بتعمليه عشاني، وعلى كل تضحية،
+          وكل كلمة طيبة، وكل دعوة حلوة. أنا معاكِ حاسس إني بكمل، وإني لقيت روحي
+          التانية اللي كنت بدور عليها. كل دقيقة بعيدة عنك بتأكد لي قد إيه أنا
+          محظوظ بيكِ، وقد إيه حياتي بتبقى ناقصة من غيرك.
+        </p>
+
+        <p>
+          انتظري مني كل الحب والاحتواء في الفترة اللي جاية.
+          <strong>يا أجمل شهندة في الدنيا، أحبك كثيراً يا شقاوة قلبي.</strong>
+        </p>
+
+        <p style="text-align: left; margin-top: 30px">
+          بكل الشوق والحب،<br />
+          حبيبك إلى الأبد ❤<br />
+          <strong>حمودي (أحمد)</strong>
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
-

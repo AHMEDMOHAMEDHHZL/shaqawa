@@ -3,245 +3,198 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💞 يا شقاوة قلبي وشهد عمري 💞</title>
-
-    <!-- خط عربي جميل -->
+    <title>إلى شاهي الغالية 💙</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri:wght@400;700&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      body {
-        font-family: "Cairo", sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: #4a0e4e;
-        background: linear-gradient(135deg, #ffe4ec, #f8d3e4, #fff0f6);
-        background-size: 400% 400%;
-        animation: moveBg 10s ease infinite;
-        line-height: 1.8;
-      }
-
-      @keyframes moveBg {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 25px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      /* الغلاف */
-      .cover-photo {
-        width: 100%;
-        max-height: 400px;
-        object-fit: cover;
-        border-radius: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-        transition: transform 0.5s ease;
-      }
-      .cover-photo:hover {
-        transform: scale(1.04);
-      }
-
-      h1 {
-        color: #d81b60;
-        font-size: 2.5em;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
-      }
-
-      h2 {
-        color: #880e4f;
-        border-bottom: 3px solid #f48fb1;
-        padding-bottom: 10px;
-        margin-top: 40px;
-        font-size: 1.8em;
-      }
-
-      p {
-        font-size: 1.2em;
-        color: #4a0e4e;
-      }
-
-      .longing-message {
-        background-color: #f3e5f5;
-        padding: 20px;
-        border-radius: 15px;
-        border: 2px dashed #ab47bc;
-        color: #6a1b9a;
-        font-weight: 600;
-        margin-top: 25px;
-      }
-
-      .song-box {
-        background-color: #fff5f7;
-        padding: 20px;
-        border-radius: 15px;
-        margin-top: 30px;
-        border: 3px solid #f06292;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .song-box p {
-        color: #ad1457;
-        font-size: 1.1em;
-      }
-
-      iframe {
-        border-radius: 15px;
-        width: 100%;
-        height: 250px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .initials-list {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .initials-list li {
-        background: linear-gradient(135deg, #f8bbd0, #f3e5f5);
-        padding: 15px 25px;
-        border-radius: 15px;
-        font-weight: bold;
-        color: #4a148c;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s;
-      }
-
-      .initials-list li:hover {
-        transform: scale(1.05);
-        background: linear-gradient(135deg, #f48fb1, #ce93d8);
-      }
-
-      .initials-list span {
-        display: block;
-        font-size: 1.6em;
-        color: #c2185b;
-        margin-bottom: 5px;
-      }
-
-      .message {
-        background-color: #fff0f6;
-        padding: 20px;
-        border-left: 6px solid #ec407a;
-        border-radius: 10px;
-        margin-top: 25px;
-        text-align: justify;
-      }
-
-      footer {
-        margin-top: 40px;
-        color: #6a1b9a;
-        font-weight: bold;
-        font-size: 1.1em;
-      }
-
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 2em;
-        }
-        h2 {
-          font-size: 1.4em;
-        }
-        p,
-        li {
-          font-size: 1em;
-        }
-      }
-    </style>
   </head>
-
   <body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-background" id="hearts-container"></div>
+
     <div class="container">
-      <!-- صورة الغلاف -->
-      <img
-        src="/images/cover.jpg"
-        alt="صورة حمودي وشهندة"
-        class="cover-photo"
-      />
+      <!-- Header Section -->
+      <header>
+        <h1>💙 شاهي 💙</h1>
+        <p class="subtitle">أجمل ما في حياتي</p>
+      </header>
 
-      <h1>يا شقاوة قلبي وشهد عمري 💞</h1>
-      <p>إلى عيوني، إلى دنيتي... <strong>شهندة (شقاوة)</strong></p>
-
-      <div class="longing-message">
-        <p>وحشااااني يا شقاوة... وحشااااني يا شهندة... كتير!</p>
+      <!-- Love Message Section -->
+      <section class="love-message">
         <p>
-          غيابك يوم واحد بيفرق في روحي، فما بالك بأسبوع كامل! كل لحظة بتمر بحس
-          إن الدنيا وقفت لحد ما أسمع صوتك تاني. قلبي مشتاقلك يا
-          <strong>شقاوة عمري</strong>.
+          إلى التي ملأت حياتي بهجة وسعادة<br />
+          إلى من جعلت قلبي ينبض بالحب والأمل<br />
+          كل لحظة معك هي ذكرى جميلة<br />
+          وكل يوم بجانبك هو نعمة أشكر الله عليها<br />
+          أنتِ نور حياتي وسر سعادتي<br />
+          أحبك يا شاهي 💙
         </p>
-      </div>
+      </section>
 
-      <div class="song-box">
-        <h2>🎶 على أنغام حُبنا</h2>
-        <p>
-          كل كلمة في الأغنية دي بتوصف إحساسي بيكِ... كأن الأيام أخيرًا رضيت
-          علينا 💗
-        </p>
-
+      <!-- Music Player Section -->
+      <section class="music-player">
+        <h2>🎵 أغنيتنا المفضلة 💙</h2>
         <iframe
-          id="song"
-          src="https://www.youtube.com/embed/HcaQQu1saF0?autoplay=1&mute=1&loop=1&playlist=HcaQQu1saF0&controls=1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/2VkC18szIr8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-        ></iframe>
+        >
+        </iframe>
+      </section>
 
-        <p><strong>عايشة حالة حب معاك وخداني... وصعب إنها تتكرر تاني 💞</strong></p>
-      </div>
+      <!-- Fun Messages Section -->
+      <section class="fun-section">
+        <h3>😂 حاجات بحبها فيكي يا شاهي 💙</h3>
+        <div class="fun-messages">
+          <div class="fun-card">😍 ضحكتك الحلوة اللي بتنور الدنيا</div>
+          <div class="fun-card">🥰 لما بتزعلي وأحاول أضحكك</div>
+          <div class="fun-card">💕 عنادك الجميل اللي بحبه</div>
+          <div class="fun-card">✨ إنك دايماً بتخليني أحسن إنسان</div>
+          <div class="fun-card">🌟 طريقة كلامك الرقيقة معايا</div>
+          <div class="fun-card">💖 إنك أجمل حاجة حصلت لي</div>
+        </div>
+      </section>
 
-      <h2>🌸 شهندة: حروف تصف معنى السعادة 🌸</h2>
-      <ul class="initials-list">
-        <li><span>ش</span> شقاوتك يا <strong>شقاوة</strong> اللي بتخلي الحياة حلوة.</li>
-        <li><span>ه</span> هدوئك اللي بيطمني وبيخلي قلبي يرتاح.</li>
-        <li><span>ن</span> نورك اللي بيضوي لي أيامي.</li>
-        <li><span>د</span> دفء حضنك اللي هو مكاني الآمن.</li>
-        <li><span>ة</span> أجمل هدية من ربنا هي إنتِ يا <strong>شقاوة</strong>.</li>
-      </ul>
+      <!-- Gallery Section -->
+      <section class="gallery">
 
-      <h2>💌 رسالة من حمودي لأجمل شهندة</h2>
-      <div class="message">
-        <p>
-          يا أميرة قلبي <strong>شهندة</strong>، يا أحلى دلع
-          <strong>شقاوة</strong> ❤️
-        </p>
-        <p>
-          إنتِ النبض اللي بيحيي قلبي، والفرحة اللي بتغيّر كل حاجة حواليّ. من يوم
-          ما عرفتك، الدنيا بقت أهدى وأجمل. بحبك عشان إنتِ نفسك، بعفويتك وطيبتك
-          اللي مالياني أمان.
-        </p>
-        <p>
-          كل ثانية بتمر بعيد عنك بتأكد لي إني لقيت نصي التاني فعلاً. بحبك فوق كل
-          كلام، وهفضل دايمًا <strong>حمودي بتاع شهندة</strong> 💕
-        </p>
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-05-26 في 21.43.42_fdb62a52.jpg"
+            alt="لحظات سعيدة"
+          />
+          <div class="photo-overlay">
+            <p>لحظات من السعادة 💙</p>
+          </div>
+        </div>
 
-        <p style="text-align: left; margin-top: 25px">
-          بكل الحب والشوق،<br />
-          <strong>حمودي (أحمد)</strong> ❤️
-        </p>
-      </div>
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-05-26 في 21.43.43_af89b853.jpg"
+            alt="أجمل الأوقات"
+          />
+          <div class="photo-overlay">
+            <p>أجمل الأوقات معك 💙</p>
+          </div>
+        </div>
 
-      <footer>💞 من حمودي إلى شقاوته... للأبد 💞</footer>
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-05-26 في 21.44.43_4c0298a6.jpg"
+            alt="ضحكتك الجميلة"
+          />
+          <div class="photo-overlay">
+            <p>ضحكتك تضيء حياتي 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-05-27 في 21.07.08_d34351a7.jpg"
+            alt="كل يوم معك"
+          />
+          <div class="photo-overlay">
+            <p>كل يوم معك هدية 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-06-04 في 20.35.28_bf79b488.jpg"
+            alt="أنتِ نور حياتي"
+          />
+          <div class="photo-overlay">
+            <p>أنتِ نور حياتي 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-06-04 في 20.35.29_542affb5.jpg"
+            alt="معك الحياة أجمل"
+          />
+          <div class="photo-overlay">
+            <p>معك الحياة أجمل 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-06-04 في 20.35.29_a130bcbb.jpg"
+            alt="حبك في قلبي"
+          />
+          <div class="photo-overlay">
+            <p>حبك في قلبي 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-06-04 في 20.35.30_b58c4589.jpg"
+            alt="إلى الأبد"
+          />
+          <div class="photo-overlay">
+            <p>إلى الأبد معاً 💙</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img
+            src="images/صورة واتساب بتاريخ 1447-06-08 في 19.07.09_f33454c9.jpg"
+            alt="حبيبتي"
+          />
+          <div class="photo-overlay">
+            <p>حبيبة قلبي 💙</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer>
+        <p>أحبك أكثر مما تتخيلين <span class="heart-icon">❤️</span></p>
+      </footer>
     </div>
+
+    <script>
+      // Create floating hearts
+      function createHeart() {
+        const heartsContainer = document.getElementById("hearts-container");
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💙";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = Math.random() * 5 + 8 + "s";
+        heart.style.fontSize = Math.random() * 15 + 15 + "px";
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 13000);
+      }
+
+      // Create hearts periodically
+      setInterval(createHeart, 800);
+
+      // Create initial hearts
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createHeart, i * 300);
+      }
+
+      // Add staggered animation delays to gallery items
+      document.addEventListener("DOMContentLoaded", function () {
+        const photoCards = document.querySelectorAll(".photo-card");
+        photoCards.forEach((card, index) => {
+          card.style.animationDelay = index * 0.1 + "s";
+        });
+      });
+    </script>
   </body>
 </html>
